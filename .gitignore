@@ -1,4 +1,5 @@
 .pyenv/
+*.pyc
 
 # Compiled source #
 ###################
