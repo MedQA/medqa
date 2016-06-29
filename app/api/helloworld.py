@@ -7,9 +7,5 @@ from flask import (Blueprint, render_template, current_app, request,
 helloworld = Blueprint('helloworld', __name__, url_prefix='/api/helloworld')
 
 @helloworld.route('/helloworld', methods=['GET'])
-def index():
-
-   data = {
-      'message' : "helloworld"
-   }      
-   return make_response(jsonify(data))
+def index():   
+   return render_template('index.html')
