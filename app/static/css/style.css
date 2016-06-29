@@ -1,0 +1,53 @@
+.heading{
+	font-size:60px;
+	font-style: bold;
+	display: inline;
+	float: left;
+	padding-left: 30px;
+	letter-spacing: 5px;
+	height: 70px;
+	width: 20px;
+}
+
+.login{
+	list-style: none;
+}
+
+.form-inline{
+	display: inline;
+	float: right;
+	padding-top: 45px;
+	padding-right: 80px;
+}
+
+.form-horizontal{
+	margin-top: 30px;
+	line-height: 40px;
+}
+
+
+.row{
+	padding-left: 100px;
+}
+
+
+.intro{
+	line-height: 40px;
+	padding-left: 10px;
+}
+.well{
+	margin-top: 30px;
+	margin-right: 30px;
+	padding-bottom: 30px;
+	margin-left: -30px;
+	
+
+#create{
+	padding-left: 200px;
+	padding-bottom: 40px;
+}
+
+#create1{
+	font-size: 20px;
+}
+

@@ -11,5 +11,6 @@ def index():
 
    data = {
       'message' : "helloworld"
-   }      
+   }  
+   return render_template('index.html')    
    return make_response(jsonify(data))

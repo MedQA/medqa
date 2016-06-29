@@ -1,0 +1,102 @@
+<html>
+	<head>
+		<title>MedQa</title>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/style.css') }}" >
+	</head>
+
+	<ul class="login">
+		<li>
+			<h1 class="heading"><B>MedQa</B></h1>
+		</li>
+		<li>
+			<form class="form-inline" role="form">
+				<div class="form-group">
+				<label for="email">Email address:</label>
+				<input type="email" class="form-control" id="email">
+				</div>
+				<div class="form-group">
+				<label for="pwd">Password:</label>
+				<input type="password" class="form-control" id="pwd">		
+				</div>
+				<button type="submit" class="btn btn-primary">Log In</button>
+			</form>
+		</li>
+	</ul>
+
+
+
+	<div class="container-fluid">
+	 
+	  <div class="row">
+	    <div class="col-sm-5">
+	    <div class="about">
+	    	
+
+	    	<div class="well">
+	    		<h1>About MedQa</h1>
+	    		<h3 class="intro">MedQa is an online portal where people or patients can  write there preventions and cures for different disease. It serves in all the fields which includes Homeopathy, Ayurvedic and Allopathy. A person can look for his answers here.</h3>
+
+	    	</div>
+
+	    	
+	    </div>
+	    </div>
+	    <div class="col-sm-7">
+	    	<h1>Create an Account</h1>
+	    	 <form class="form-horizontal" role="form">
+  <div class="form-group">
+    
+    <div class="col-sm-9">
+      <input type="text" class="form-control" id="name" placeholder="Enter name">
+    </div>
+    </div>
+
+  <div class="form-group">
+    <div class="col-sm-9">
+      <input type="email" class="form-control" id="email" placeholder="Enter email">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-9">
+      <input type="text" class="form-control" id="country" placeholder="Your Country">
+    </div>
+  	<div class="form-group">
+    <div class="col-sm-2">
+      <input type="number" class="form-control" id="age" placeholder="Age">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-9">
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-9">
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-1 col-sm-0" id="check">
+      <div class="checkbox">
+        <label><input type="checkbox"> Confirm </label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10" id="create">
+      <button type="submit" class="btn btn-primary" id="create1">Create Account</button>
+    </div>
+  </div>
+</form>
+	    </div>
+	  </div>
+	</div>
+
+	<footer class="copy">
+		@Copyright 2016
+	</footer>
+</html>
+
