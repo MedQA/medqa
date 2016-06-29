@@ -1,0 +1,54 @@
+
+body {
+	background-image: url("back.jpg");
+}
+.navbar {
+    border-radius: 0;
+    background-color:lightblue;
+}
+.bs-example{
+    	margin: 20px;
+    }
+.s1{
+        margin-bottom: 10px;
+		margin-top: 30px;
+		background-color: #ffffff;
+		
+    }
+.s2{
+        margin-bottom: 10px;
+    
+		margin-top:20px;     
+        background-color: lightgreen;
+        margin-left:30px;
+       
+
+		
+    }
+#j1{
+	margin-top:100px;
+	margin-left:30px;
+    padding:auto;
+    background-color: #ffffff;
+}   
+#f{
+	margin-left: 20px;
+} 
+
+
+#f1{
+		margin-left:30px; 
+		
+	}
+
+	
+.navbar{
+    height:70px;
+}
+#names{
+	color:	#00008B;
+	font-size: 50px;
+	font-family:monospace;
+	font-weight:bolder;
+	margin-top: 5px;
+}

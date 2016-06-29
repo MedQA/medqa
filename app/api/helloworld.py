@@ -8,8 +8,5 @@ helloworld = Blueprint('helloworld', __name__, url_prefix='/api/helloworld')
 
 @helloworld.route('/helloworld', methods=['GET'])
 def index():
-
-   data = {
-      'message' : "helloworld"
-   }      
-   return make_response(jsonify(data))
+     
+   return render_template('index.html')
