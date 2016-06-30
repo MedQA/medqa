@@ -1,28 +1,32 @@
 
 
+{% extends "base.html" %}
+{ % block title % }Login Page{ % endblock %}
 
-<html>
-<head>
-<meta charset="utf-8">
-<title>Login Page</title>
-<style type="text/css">
-body {
-background-color: #FFFFFF;
-color: #5a5656;
-font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-font-size: 16px;
-line-height: 1.5em;
-}
-a { text-decoration: none; }
-h1 { font-size: 1em; }
-h1, p {
-margin-bottom: 10px;
-}
-strong {
-font-weight: bold;
-}
-.uppercase { text-transform: uppercase; }
+{% block nave %}<form id="signin" class="navbar-form navbar-right" role="form">
+            <div class="input-group">
+           
+                <input id="email" type="email" class="form-control" name="email" value="" placeholder="Email ">                                        
+            </div>
 
+         <div class="input-group">
+      
+                <input id="password" type="password" class="form-control" name="password" value="" placeholder="Password">
+            </div>
+      
+      
+            <button type="submit" class="btn btn-primary">Login</button><br>
+            
+            <label class="checkbox inline" >
+                           <input type="checkbox" value="remember-me" > Remember me
+</label>
+{ % endblock % }
+
+
+
+{ % block body % }
+
+<style>
 /* ---------- LOGIN ---------- */
 #login {
 margin: 50px auto;
@@ -127,11 +131,8 @@ height: 50px;
 text-transform: uppercase;
 width: 250px;
 }
-
-
 </style>
-</head>
-<body>
+
 <div id="login">
 <h1><strong>MedQA</strong></h1>
  <article>
@@ -159,11 +160,6 @@ width: 250px;
 <button class="Google">Login using Google</button>
 </p>
 
-<footer>
-			<small><strong><b>&copy; MedQA</b></strong></small>
-  			
-		</footer>
-</div> <!-- end login -->
 
-</body>
-</html>
+{ % endblock % }
+

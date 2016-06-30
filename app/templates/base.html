@@ -1,0 +1,62 @@
+
+
+
+<html>
+<head>
+
+<meta charset="utf-8">
+<title>{ % block title % }{ % endblock % }</title>
+<style type="text/css">
+body {
+background-color: #FFFFFF;
+color: #5a5656;
+font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+font-size: 16px;
+line-height: 1.5em;
+}
+a { text-decoration: none; }
+h1 { font-size: 1em; }
+h1, p {
+margin-bottom: 10px;
+}
+strong {
+font-weight: bold;
+}
+.uppercase { text-transform: uppercase; }
+
+{ % block style %}{ % endblock % }
+</style>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-default" >
+  <div class="container-fluid">
+   
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
+        <span class="sr-only"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#" id="names">MedQA</a>
+    </div>
+
+   
+    <div class="collapse navbar-collapse" id="nave">{% block nave %}{% endblock %}
+  </div>
+
+  </div>
+</nav>
+{ % block body % }{ % endblock %}
+                <footer>
+		
+			<small><strong><b>&copy; MedQA</b></strong></small>	
+		</footer>
+
+</div> <!-- end login -->
+
+</body>
+</html>
