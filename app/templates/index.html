@@ -1,31 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+{% extends "base.html" %}
+{% block title %}MedQA{% endblock %}
 
-<title>MedQA</title>
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/lib/global.css') }}"  >
-</head> 
-<body>
-<nav class="navbar navbar-default" >
-  <div class="container-fluid">
-   
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
-        <span class="sr-only"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#" id="names">MedQA</a>
-    </div>
-
-   
-    <div class="collapse navbar-collapse" id="navbar-collapse-1">
-    <form id="signin" class="navbar-form navbar-right" role="form">
+{% block nave %}<form id="signin" class="navbar-form navbar-right" role="form">
             <div class="input-group">
            
                 <input id="email" type="email" class="form-control" name="email" value="" placeholder="Email ">                                        
@@ -45,12 +21,8 @@
                          
                        <a class="help-inline" href="#" style="margin-left: 100px;">  Forgot password? </a>
                     
-        </form>
-     
-    </div>
-  </div>
-</nav>
-    <div class="container">
+        </form>{% endblock %}
+{% block body %}<div class="container">
         <div class="row">
             <div class="col-sm-6">
                 <div class="s1">
@@ -275,13 +247,4 @@
         </div>
             </div>
         </div>
-    </div>
-  
-  <!-- Footer -->
-  <div id="footer">
-      <div class="container" align="center">
-        <p style="color:#RRGGBB; font-weight:bold;""> <span  class="glyphicon glyphicon-copyright-mark" ></span>Copyright, 2016</p>
-      </div>
-    </div>
-</body>
-</html>    
+    </div>{% endblock %}
