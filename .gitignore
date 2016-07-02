@@ -1,5 +1,6 @@
-.pyenv/
+venv/
 *.pyc
+*.*~
 
 # Compiled source #
 ###################
