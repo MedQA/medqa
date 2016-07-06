@@ -1,9 +1,9 @@
-import os  
-from flask import Flask
 
 import config as Config  
 from .common import constants as COMMON_CONSTANTS  
 from .api import helloworld
+from .models import User  
+from .extensions import db, login_manager, csrf  
 
 # For import *
 __all__ = ['create_app']
@@ -44,7 +44,21 @@ def configure_app(app, config=None):
    app.config.from_object(Config.get_config(application_mode))
 
 def configure_extensions(app):  
-   pass
+   # flask-sqlalchemy
+   db.init_app(app)
+
+   # flask-login
+   login_manager.login_view = 'frontend.index'
+   login_manager.refresh_view = 'frontend.index'
+
+   @login_manager.user_loader
+   def load_user(id):
+      return User.query.get(id)
+
+   login_manager.setup_app(app)
+
+   # flask-wtf
+   csrf.init_app(app)
 
 def configure_blueprints(app, blueprints):  
    for blueprint in blueprints:
@@ -63,3 +77,4 @@ def configure_error_handlers(app):
    @app.errorhandler(500)
    def server_error_page(error):
       return "ERROR PAGE!"
+
