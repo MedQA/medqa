@@ -1,4 +1,4 @@
-# Pastebin elsLxw08
+
 from flask.ext.script import Manager, Shell, Server
 from flask import current_app
 from app import create_app
