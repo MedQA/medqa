@@ -1,0 +1,16 @@
+sudo: required
+language: python
+python:
+- 2.7
+install:
+- pip install -r requirements.txt
+- pip install coveralls
+script:
+- nosetests
+after_success:
+- coveralls
+deploy:
+  provider: heroku
+  api_key:
+    secure: JyJTu9sjwpD73Mu75pQcycv/C5oPbX7CVbuT4DdtCR5KWAW9XMyqyBB2kHr30rlGqPwrRzmk7qECSXHmBsisVCOxBN1tHuWXlwXEkcmpK2Plk4aw1QeFvWvHUIO9aM39dM+xMAgHUiS5TK+mGVYxIEvKGRZFiPrwhCRv02U6NuMqM04ZAz3rv1mhQrpKUxsfPSxzBiwRp8B68ttgx+52/OT3ODbalggGNdkVv1B/kbe9QCbd2lwhZBNAbqo1T0y4xUyxwFwcyG6t/NA+D2A5wBCu8/OAkrU+J+KZn+xZVl2wVnQnalK+f4rx0SOtux6cfsRQDlbvEPsqWqtn0ls0y8DfwSV1spUbj6MWOZITcwSPuavSwq1NyLp9wgDxj1lr6Zyjr0ejfpDi4Vix4q8Fa+r05I70OmuHSYtrdsrUW6Un9MCmyksqqzMtNImjCMKCfB6nkfwC5wx2D5XnmdRz/zVbYaaPohWuXxJ9PUpvZK0Z+VUnTgahS0SYTk7yG/LM9je60dXMU/hYhHkjytNeqDHvItnQJuxtUm2N4So5Yrr1G0bZ2Bmr/jSrIfI2vG2k05Zf5zHHT+S+shETtpZ5+bemjp6zZQkKbmgYFg8aQy+QWt0p7YzK1q9q0bzpIsFA2Ha/bo/myWO0vAJ7GxGgcreTGzBdPBmRjnv0UxdGtgc=
+  app: medqa
