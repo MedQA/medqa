@@ -1,18 +1,18 @@
-import os  
+import os
 from flask import Flask
-
-import config as Config  
-from .common import constants as COMMON_CONSTANTS  
+from .extensions import db
+import config as Config
+from .common import constants as COMMON_CONSTANTS
 from .api import helloworld
 
 # For import *
 __all__ = ['create_app']
 
-DEFAULT_BLUEPRINTS = [  
+DEFAULT_BLUEPRINTS = [
    helloworld
 ]
 
-def create_app(config=None, app_name=None, blueprints=None):  
+def create_app(config=None, app_name=None, blueprints=None):
    """Create a Flask app."""
 
    if app_name is None:
@@ -29,7 +29,7 @@ def create_app(config=None, app_name=None, blueprints=None):
    configure_error_handlers(app)
    return app
 
-def configure_app(app, config=None):  
+def configure_app(app, config=None):
    """Different ways of configurations."""
 
    # http://flask.pocoo.org/docs/api/#configuration
@@ -43,22 +43,24 @@ def configure_app(app, config=None):
    application_mode = os.getenv('APPLICATION_MODE', 'LOCAL')
    app.config.from_object(Config.get_config(application_mode))
 
-def configure_extensions(app):  
-   pass
+def configure_extensions(app):
+    # flask-sqlalchemy
+    db.init_app(app)
 
-def configure_blueprints(app, blueprints):  
+
+def configure_blueprints(app, blueprints):
    for blueprint in blueprints:
       app.register_blueprint(blueprint)
 
-def configure_logging(app):  
+def configure_logging(app):
     pass
 
-def configure_hook(app):  
+def configure_hook(app):
    @app.before_request
    def before_request():
       pass
 
-def configure_error_handlers(app):  
+def configure_error_handlers(app):
    # example
    @app.errorhandler(500)
    def server_error_page(error):
