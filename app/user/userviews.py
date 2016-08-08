@@ -11,14 +11,14 @@ from userforms import SignupForm, LoginForm
 
 user = Blueprint('user', __name__)
 
-@user.route('/')
-@user.route('/signup', methods=['GET', 'POST'])
-def signup(): #TODO pass login form also
+#@user.route('/')
+@user.route('/', methods=['GET', 'POST'])
+def signup():
     form1 = SignupForm()
     form2 = LoginForm()
     if form1.validate_on_submit():
         if User.is_email_taken(form1.email.data):
-            return render_template('user/index.html', form1=form1,form2=form2, error = 'Email Already Taken!' )
+            return render_template('user/index.html', form1=form1,form2=form2, error = 'Email Address Already Taken!' )
         user = User()
         form1.populate_obj(user)
 
@@ -26,16 +26,16 @@ def signup(): #TODO pass login form also
         db.session.commit()
         login_user(user)
         return redirect(url_for('user.userprofile',firstname=user.firstname))
-    return render_template('user/index.html', form1=form1, form2=form2) #TODO login form
+    return render_template('user/index.html', form1=form1, form2=form2)
 
 @user.route('/login',methods=['GET','POST'])
 def login():
     form1 = SignupForm()
     form2 = LoginForm()
     if form2.validate_on_submit():
-        user , authenticated = User.authenticate(form2.email.data,form2.password.data)
+        user , authenticated = User.authenticate(form2.useremail.data,form2.password.data)
         if not authenticated:
-            return render_template('user/index.html',form1=form1, form2=form2,error='Invalid email or password.')
+            return render_template('user/index.html',form1=form1, form2=form2,usererror='Invalid email or password.')
         login_user(user, form2.remember_me.data)
         return redirect(url_for('user.userprofile',firstname=user.firstname))
     return render_template('user/index.html',form1=form1, form2=form2)

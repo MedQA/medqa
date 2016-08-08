@@ -1,23 +1,36 @@
 {% extends 'base.html' %}
+
 {% block title %}MedQA{% endblock %}
+
+{% block cssfile %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/style.css') }}"  >
+{% endblock %}
+
+
 {% block navbar %}
 <form id="signin" class="navbar-form navbar-right" role="form" action="{{ url_for('user.login') }}" method="post">
     {{ form2.hidden_tag() }}<!--For CSRF -->
-            <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input id="email" type="email" class="form-control" name="email" value="" placeholder="Email Address" {{ form2.email }}
+        {% if form2.useremail.errors or form2.password.errors or usererror %}
+            <div class="form-group has-error has-feedback">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input id="email" type="email" class="form-control" name="useremail" value="" placeholder="Email Address" {{ form2.useremail }}
+                </div>
+                <div class="input-group">
+    				<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input id="password" type="password" class="form-control" name="password" value="" placeholder="Password" {{form2.password}}
+                </div>
             </div>
-            {% for message in form2.email.errors %}
-                 <div>{{ message }}</div>
-              {% endfor %}
-            <div class="input-group">
+        {% else %}
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input id="email" type="email" class="form-control" name="useremail" value="" placeholder="Email Address" {{ form2.useremail }}
+        </div>
+        <div class="input-group">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                 <input id="password" type="password" class="form-control" name="password" value="" placeholder="Password" {{form2.password}}
-            </div>
-            {% for message in form2.password.errors %}
-                 <div>{{ message }}</div>
-              {% endfor %}
-
+        </div>
+        {% endif %}
             <button type="submit" class="btn btn-primary">Login</button><br>
 
             <label class="checkbox inline" >
@@ -32,9 +45,9 @@
 
 
 {% block body %}
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6">
+    <div class="container-fluid">
+        <div class="row content">
+            <div class="col-sm-7">
                 <div class="section1">
 						<div class="jumbotron">
 							<h2>MedQA</h2>
@@ -42,18 +55,55 @@
 						  </div>
 				</div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-5" style="width:500px;">
                 <div class="section2">
 					<div class="bs-example">
 						<h1>Create an account</h1>
 						<h3>It's free and always will be.</h3>
 						<br />
-						<form class="form-inline" role="form" action="{{ url_for('user.signup') }}" method='post' >
+						<form class="form-horizontal" role="form" action="{{ url_for('user.signup') }}" method='post' id="signupForm">
                             {{ form1.hidden_tag() }}<!--For CSRF -->
-							<div class="form-group">
-								<label class="sr-only" for="firstName">First name</label>
-								<input type="text" class="form-control" id="firstName" placeholder="First name" {{form1.firstname}}
-							</div>
+                            {% if form1.firstname.errors or form1.surname.errors %}
+                            <div class="form-group has-error has-feedback">
+                                {% if form1.firstname.errors %}
+
+                                        <div class="col-xs-6" style="padding-right: 0px;" >
+                                            <input type="text" class="form-control" id="firstName" placeholder="First name" {{form1.firstname}}
+                                            <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                                        </div>
+                                {% else %}
+
+                                <div class="col-xs-6" style="padding-right: 0px;" >
+                                    <input type="text" class="form-control" id="firstName" placeholder="First name" {{form1.firstname}}
+                                </div>
+
+                                {% endif %}
+                                {% if form1.surname.errors %}
+
+                                    <div class="col-xs-5" style="padding-right: 0px;" >
+                                        <input type="text" class="form-control" id="Surname" placeholder="Surname" {{form1.surname}}
+                                        <span class="glyphicon glyphicon-remove form-control-feedback"></span>
+                                    </div>
+                                {% else %}
+                                <div class="col-xs-5" >
+                                    <input type="text" class="form-control" id="Surname" placeholder="Surname" {{form1.surname}}
+                               </div>
+                                {% endif %}
+                            </div>
+
+                            {% else %}
+                            <div class="form-group">
+                                <div class="col-xs-6" style="padding-right: 0px;" >
+								    <input type="text" class="form-control" id="firstName" placeholder="First name" {{form1.firstname}}
+                                </div>
+                                <div class="col-xs-5" >
+                                    <input type="text" class="form-control" id="Surname" placeholder="Surname" {{form1.surname}}
+                               </div>
+                           </div>
+                            {% endif %}
+
+
+                            <!--
                             {% for message in form1.firstname.errors %}
                                  <div>{{ message }}</div>
                               {% endfor %}
@@ -64,57 +114,67 @@
                             {% for message in form1.surname.errors %}
                                  <div>{{ message }}</div>
                               {% endfor %}
-						<br/>
-                        <br/>
-							<div class="row">
-								<div class="col-sm-9" >
-									<div class="form-group">
-										<label class="sr-only" for="inputEmail">Email:</label>
-										<input type="email" class="form-control" id="inputEmail" placeholder="Email" {{ form1.email }}
-									</div>
-								</div>
-							</div>
+                          -->
+                          {% if error%}{{error}}{% endif %}
+                          {% if form1.email.errors %}
+                          <div class="form-group has-error has-feedback">
+                              <div class="col-xs-11">
+                                  <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email" {{ form1.email }}
 
-                            {% for message in form1.email.errors %}
-                                 <div>{{ message }}</div>
-                              {% endfor %}
-                              {% if error%}{{error}}{% endif %}
-                              <br/>
-							<div class="row">
-								<div class="col-sm-9" >
-									<div class="form-group">
-										<label class="sr-only" for="inputPassword">Password:</label>
-										<input type="password" class="form-control" id="inputPassword" placeholder="Password" {{ form1.password }}
-									</div>
-								</div>
-							</div>
-                            <br/>
-							<div class="row">
-								<div class="col-sm-9" >
-									<div class="form-group">
-										<label class="sr-only" for="confirmPassword">Confirm Password:</label>
-										<input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" {{ form1.confirm_Password }}
-									</div>
-								</div>
-							</div>
+                              </div>
+                          </div>
+                          {% else %}
+                          <div class="form-group">
+                                  <div class="col-xs-11">
+                                      <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email" {{ form1.email }}
+                                  </div>
+                          </div>
+                          {% endif %}
+                           {% if form1.password.errors %}
+                           <div class="form-group has-error has-feedback">
+                               <div class="col-xs-11">
+                                   <input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password" {{ form1.password }}
 
-                            {% for message in form1.confirm_Password.errors %}
-                                 <div>{{ message }}</div>
-                              {% endfor %}
-                              <br />
-							<div class="row">
-								<div class="col-sm-9" >
-									<div class="form-group">
-										<label class="sr-only" for="phoneNumber">Phone:</label>
-										<input type="tel" class="form-control" id="tel" placeholder="Phone Number" {{ form1.phone_number }}
-									</div>
+                               </div>
+                              </div>
+                            {% else %}
+							<div class="form-group">
+								<div class="col-xs-11">
+    								<input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password" {{ form1.password }}
 								</div>
 							</div>
+                            {% endif %}
+                            {% if form1.confirm_Password.errors %}
+                            <div class="form-group has-error has-feedback">
+                                <div class="col-xs-11">
+                                    {% if form1.confirm_Password.errors[0] == 'Passwords must match' %}
+                                        {{ form1.confirm_Password.errors[0] }}
+                                    {% endif %}
+                                    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" {{ form1.confirm_Password }}
 
-                            {% for message in form1.phone_number.errors %}
-                                 <div>{{ message }}</div>
-                              {% endfor %}
-                              <br />
+                                </div>
+                               </div>
+                            {% else %}
+							<div class="form-group">
+								<div class="col-xs-11">
+	                                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" {{ form1.confirm_Password }}
+								</div>
+							</div>
+                            {% endif %}
+                            {% if form1.phone_number.errors %}
+                            <div class="form-group has-error has-feedback">
+                                <div class="col-xs-11">
+									<input type="tel" class="form-control" id="tel" placeholder="Phone Number" {{ form1.phone_number }}
+
+								</div>
+                            </div>
+                            {% else %}
+							<div class="form-group">
+								<div class="col-xs-11">
+									<input type="tel" class="form-control" id="tel" placeholder="Phone Number" {{ form1.phone_number }}
+								</div>
+							</div>
+                            {% endif %}
                             <!--
 							<h3>Birthday</h3>
 							<div class="row">
@@ -236,33 +296,36 @@
 								</div>
 							</div>
                             -->
-                            <br/>
-							<div class="row">
-								<div class="col-sm-9" >
-									<div class="form-group">
-										<div class=" col-xs-9">
-											<label class="checkbox-inline">
-											<input type="checkbox" value="agree" {{ form1.terms_cond }} I agree to the <a href="#">Terms and Conditions</a>.
-											</label>
-										</div>
-									</div>
+                            {% if form1.terms_cond.errors %}
+                            <div class="form-group has-error has-feedback">
+                                <div class=" col-xs-11 ">
+									<label class="checkbox-inline">
+										<input type="checkbox" value="agree" {{ form1.terms_cond }} I agree to the <a href="#">Terms and Conditions</a>.(Must Agree)
+									</label>
+								</div>
+                            </div>
+
+                            {% else %}
+							<div class="form-group">
+								<div class=" col-xs-11 ">
+									<label class="checkbox-inline">
+										<input type="checkbox" value="agree" {{ form1.terms_cond }} I agree to the <a href="#">Terms and Conditions</a>.
+									</label>
 								</div>
 							</div>
-                            <br/>
-							<div class="row">
-								<div class="col-sm-9" >
-									<div class="form-group">
-										<div class="col-xs-9 col-sm-offset-2">
-											<input type="submit" class="btn btn-success btn-lg btn-block" value="Create an account">
-										</div>
-									</div>
+                            {% endif %}
+							<div class="form-group">
+								<div class=" col-xs-11">
+									<input type="submit" class="btn btn-success btn-lg btn-block" value="Create an account">
 								</div>
 							</div>
-						</form>
-					</div>
+                        </form>
+
+
+                    </div>
 				</div>
             </div>
-        </div>
+		</div>
     </div>
 
 {% endblock %}

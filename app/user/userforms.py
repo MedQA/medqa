@@ -4,7 +4,7 @@ from wtforms.validators import Required, Length, Email, EqualTo
 
 class SignupForm(Form):
     firstname = StringField('Firstname', validators=[Required(),Length(1,70)])
-    surname = StringField('Lastname',validators=None)
+    surname = StringField('Lastname',validators=[Required(),Length(1,70)])
     email = StringField('Email', validators=[Required(), Length(1,70), Email()])
     password = PasswordField('Password', validators=[Required()])
     confirm_Password = PasswordField('Confirm Password',validators=[Required(),EqualTo('password', message='Passwords must match')])
@@ -17,7 +17,7 @@ class SignupForm(Form):
     submit = SubmitField('Log In')
 
 class LoginForm(Form):
-    email = StringField('Email',validators=[Required(),Length(1,70),Email()])
+    useremail = StringField('Email',validators=[Required(),Length(1,70),Email()])
     password = PasswordField('Password',validators=[Required()])
     remember_me = BooleanField(default=False)
     submit = SubmitField()

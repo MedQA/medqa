@@ -20,6 +20,5 @@ def initdb():
     db.drop_all(bind=None)
     db.create_all(bind=None)
 
-
 if __name__ == "__main__":
     manager.run()
