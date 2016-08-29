@@ -25,9 +25,13 @@ Note:- if you are getting some error like 'directory doesn't exists' then do the
 ` $ sudo su - postgres`
 
 ` $ psql -d template1 -U postgres`
+
       `template1=# CREATE USER newseusername WITH PASSWORD 'newpassword';`
+      
       `template1=# CREATE DATABASE databasename;`
+      
       `template1=# GRANT ALL PRIVILEGES ON DATABASE databasename to newseusername;`
+      
      ` template1=# \q`
 
 Ignore if you get any History File(Permission denied) warning on "\q" command.
