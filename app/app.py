@@ -1,6 +1,10 @@
 import os
 from flask import Flask
+<<<<<<< HEAD
 from .extensions import db, login_manager, csrf
+=======
+from .extensions import db
+>>>>>>> 6ff09ad4dbd79c0c6b65d64a3b1282a6619c9d86
 import config as Config
 from .common import constants as COMMON_CONSTANTS
 from .api import helloworld
@@ -11,7 +15,11 @@ from .user import User
 __all__ = ['create_app']
 
 DEFAULT_BLUEPRINTS = [
+<<<<<<< HEAD
    user
+=======
+   helloworld
+>>>>>>> 6ff09ad4dbd79c0c6b65d64a3b1282a6619c9d86
 ]
 
 def create_app(config=None, app_name=None, blueprints=None):
@@ -49,6 +57,7 @@ def configure_extensions(app):
     # flask-sqlalchemy
     db.init_app(app)
 
+<<<<<<< HEAD
     # flask-login
     login_manager.login_view = 'user.login'
 
@@ -60,6 +69,8 @@ def configure_extensions(app):
 
     # flask-wtf
     csrf.init_app(app)
+=======
+>>>>>>> 6ff09ad4dbd79c0c6b65d64a3b1282a6619c9d86
 
 def configure_blueprints(app, blueprints):
    for blueprint in blueprints:

@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<<<<<<< HEAD
 {% block cssfile %}{% endblock %}
 {% block jsfile %}{% endblock %}
 </head>
@@ -16,6 +17,14 @@
 <nav class="navbar navbar-default" >
   <div class="container-fluid">
 
+=======
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/style.css') }}"  >
+</head> 
+<body>
+<nav class="navbar navbar-default" >
+  <div class="container-fluid">
+   
+>>>>>>> 6ff09ad4dbd79c0c6b65d64a3b1282a6619c9d86
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
@@ -23,6 +32,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+<<<<<<< HEAD
       <a class="navbar-brand" href="{{ url_for('user.signup') }}"><img src="{{ url_for('static', filename = 'css/assets/images/logo.png') }}" id="logo"/></a>
     </div>
 
@@ -30,14 +40,27 @@
     <div class="collapse navbar-collapse" id="navbar-collapse-1">
     {% block navbar %}{% endblock %}
 
+=======
+      <a class="navbar-brand" href="#"><img src="{{ url_for('static', filename = 'css/assets/images/logo.png') }}" id="logo"/></a>
+    </div>
+
+   
+    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+    {% block navbar %}{% endblock %}
+		
+>>>>>>> 6ff09ad4dbd79c0c6b65d64a3b1282a6619c9d86
     </div>
   </div>
 </nav>
 
 {% block body %}
 {% endblock %}
+<<<<<<< HEAD
 <div class="push"></div>
 </div>
+=======
+
+>>>>>>> 6ff09ad4dbd79c0c6b65d64a3b1282a6619c9d86
 <!-- Footer -->
 	<div id="footerwrap">
 			<div class="container">
@@ -45,6 +68,11 @@
 			</div>
 		</div>
 
+<<<<<<< HEAD
 
 </body>
 </html>
+=======
+</body>
+</html>       
+>>>>>>> 6ff09ad4dbd79c0c6b65d64a3b1282a6619c9d86
