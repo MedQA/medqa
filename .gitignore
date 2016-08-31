@@ -5,9 +5,11 @@ __pycache__/
 .venv/
 # C extensions
 *.so
+app/database_info.py
 
 # Distribution / packaging
 .Python
+venv/
 env/
 build/
 develop-eggs/

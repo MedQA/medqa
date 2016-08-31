@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 * {
     margin: 0;
 }
@@ -14,8 +13,6 @@ html, body {
 .push {
     height: 70px; /* .push must be the same height as .footer */
 }
-=======
->>>>>>> 6ff09ad4dbd79c0c6b65d64a3b1282a6619c9d86
 body {
 	background-image: url("assets/images/main5.png");
 }
@@ -28,7 +25,6 @@ body {
 .section1{
         margin-bottom: 10px;
 		margin-top: 30px;
-<<<<<<< HEAD
 
     }
 .section2{
@@ -40,18 +36,6 @@ body {
 }
 #footerwrap {
 		height: 70px;
-=======
-		
-    }
-.section2{
-        margin-bottom: 10px;
-		
-    }
-.jumbotron{
-    padding:20px 20px 20px 20px;
-}    
-#footerwrap {
->>>>>>> 6ff09ad4dbd79c0c6b65d64a3b1282a6619c9d86
 		background: #f2f2f2;
 		margin-top: 0px;
 		padding-top: 20px;
@@ -63,11 +47,7 @@ body {
 		color: blue;
 	}
 #eg1{
-<<<<<<< HEAD
 		margin-left:15px;
-=======
-		margin-left:15px; 
->>>>>>> 6ff09ad4dbd79c0c6b65d64a3b1282a6619c9d86
 	}
 
 #logo{
@@ -75,11 +55,7 @@ body {
 	height:40px;
 	margin-left:30px;
 	margin-buttom:10px;
-<<<<<<< HEAD
 }
-=======
-}	
->>>>>>> 6ff09ad4dbd79c0c6b65d64a3b1282a6619c9d86
 .navbar{
     height:70px;
 }

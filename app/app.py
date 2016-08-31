@@ -1,10 +1,6 @@
 import os
 from flask import Flask
-<<<<<<< HEAD
 from .extensions import db, login_manager, csrf
-=======
-from .extensions import db
->>>>>>> 6ff09ad4dbd79c0c6b65d64a3b1282a6619c9d86
 import config as Config
 from .common import constants as COMMON_CONSTANTS
 from .api import helloworld
@@ -15,49 +11,44 @@ from .user import User
 __all__ = ['create_app']
 
 DEFAULT_BLUEPRINTS = [
-<<<<<<< HEAD
    user
-=======
-   helloworld
->>>>>>> 6ff09ad4dbd79c0c6b65d64a3b1282a6619c9d86
 ]
 
 def create_app(config=None, app_name=None, blueprints=None):
-   """Create a Flask app."""
+    """Create a Flask app."""
 
-   if app_name is None:
+    if app_name is None:
      app_name = Config.DefaultConfig.PROJECT
-   if blueprints is None:
+    if blueprints is None:
      blueprints = DEFAULT_BLUEPRINTS
 
-   app = Flask(app_name, instance_path=COMMON_CONSTANTS.INSTANCE_FOLDER_PATH, instance_relative_config=True)
-   configure_app(app, config)
-   configure_hook(app)
-   configure_blueprints(app, blueprints)
-   configure_extensions(app)
-   configure_logging(app)
-   configure_error_handlers(app)
-   return app
+    app = Flask(app_name, instance_path=COMMON_CONSTANTS.INSTANCE_FOLDER_PATH, instance_relative_config=True)
+    configure_app(app, config)
+    configure_hook(app)
+    configure_blueprints(app, blueprints)
+    configure_extensions(app)
+    configure_logging(app)
+    configure_error_handlers(app)
+    return app
 
 def configure_app(app, config=None):
-   """Different ways of configurations."""
+    """Different ways of configurations."""
 
-   # http://flask.pocoo.org/docs/api/#configuration
-   app.config.from_object(Config.DefaultConfig)
+    # http://flask.pocoo.org/docs/api/#configuration
+    app.config.from_object(Config.DefaultConfig)
 
-   if config:
+    if config:
      app.config.from_object(config)
      return
 
-   # get mode from os environment
-   application_mode = os.getenv('APPLICATION_MODE', 'LOCAL')
-   app.config.from_object(Config.get_config(application_mode))
+    # get mode from os environment
+    application_mode = os.getenv('APPLICATION_MODE', 'LOCAL')
+    app.config.from_object(Config.get_config(application_mode))
 
 def configure_extensions(app):
     # flask-sqlalchemy
     db.init_app(app)
 
-<<<<<<< HEAD
     # flask-login
     login_manager.login_view = 'user.login'
 
@@ -69,23 +60,21 @@ def configure_extensions(app):
 
     # flask-wtf
     csrf.init_app(app)
-=======
->>>>>>> 6ff09ad4dbd79c0c6b65d64a3b1282a6619c9d86
 
 def configure_blueprints(app, blueprints):
-   for blueprint in blueprints:
+    for blueprint in blueprints:
       app.register_blueprint(blueprint)
 
 def configure_logging(app):
     pass
 
 def configure_hook(app):
-   @app.before_request
-   def before_request():
+    @app.before_request
+    def before_request():
       pass
 
 def configure_error_handlers(app):
-   # example
-   @app.errorhandler(500)
-   def server_error_page(error):
+    # example
+    @app.errorhandler(500)
+    def server_error_page(error):
       return "ERROR PAGE!"
