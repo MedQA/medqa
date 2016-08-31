@@ -1,5 +1,6 @@
-import os  
+import os
 from common.constants import INSTANCE_FOLDER_PATH
+from database_info import Data_urls
 
 class BaseConfig(object):
 
@@ -24,19 +25,21 @@ class DefaultConfig(BaseConfig):
    # Secret key for signing cookies
    SECRET_KEY = 'development key'
 
-class LocalConfig(DefaultConfig):  
+   SQLALCHEMY_DATABASE_URI = Data_urls.dev_url
+
+class LocalConfig(DefaultConfig):
    # config for local development
    pass
 
-class StagingConfig(DefaultConfig):  
+class StagingConfig(DefaultConfig):
     # config for staging environment
     pass
 
-class ProdConfig(DefaultConfig):  
+class ProdConfig(DefaultConfig):
     # config for production environment
     pass
 
-def get_config(MODE):  
+def get_config(MODE):
    SWITCH = {
       'LOCAL'     : LocalConfig,
       'STAGING'   : StagingConfig,

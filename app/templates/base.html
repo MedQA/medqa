@@ -2,42 +2,49 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-   <link rel="stylesheet"  href="{{ url_for('static', filename = 'css/lib/bootstrap.css') }}"  >
-      <script src="{{ url_for('static', filename = 'js/lib/jquery.js') }}"></script>
-      <script src="{{ url_for('static', filename = 'js/lib/bootstrap.js') }}"></script>
-
+<link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename = 'css/assets/images/favicon.ico') }}"/>
 <title>{% block title %}{% endblock %}</title>
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/lib/global.css') }}"  >
-</head> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+{% block cssfile %}{% endblock %}
+{% block jsfile %}{% endblock %}
+</head>
 <body>
-<nav class="navbar navbar-default" style="background-color:#f5f5f5;">
+    <div class="wrapper">
+<nav class="navbar navbar-default" >
   <div class="container-fluid">
-   
+
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
-        <span class="sr-only"></span>
+        <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#" id="names">MedQA</a>
+      <a class="navbar-brand" href="{{ url_for('user.signup') }}"><img src="{{ url_for('static', filename = 'css/assets/images/logo.png') }}" id="logo"/></a>
     </div>
 
-   
-    <div class="collapse navbar-collapse" id="nave">{% block nave %}{% endblock %}
-  </div>
 
+    <div class="collapse navbar-collapse" id="navbar-collapse-1">
+    {% block navbar %}{% endblock %}
+
+    </div>
   </div>
 </nav>
- {% block body %}{% endblock %}
-    
-   
-  
-  <!-- Footer -->
-  <div id="footer">
-      <div class="container" align="center">
-        <p style="color:#RRGGBB; font-weight:bold;""> <span>&copy;</span>Copyright, 2016</p>
-      </div>
-    </div>
+
+{% block body %}
+{% endblock %}
+<div class="push"></div>
+</div>
+<!-- Footer -->
+	<div id="footerwrap">
+			<div class="container">
+				<h4>&#169; Copyright 2016 </h4>
+			</div>
+		</div>
+
+
 </body>
-</html>    
+</html>
