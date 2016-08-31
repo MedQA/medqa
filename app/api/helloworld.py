@@ -1,12 +1,14 @@
 """
  Simple API endpoint for returning helloworld
-"""
+
 from flask import (Blueprint, render_template, current_app, request,
                    flash, url_for, redirect, session, abort, jsonify, make_response)
 
-helloworld = Blueprint('helloworld', __name__, url_prefix='/api/helloworld')
+helloworld = Blueprint('helloworld', __name__)
 
-@helloworld.route('/helloworld', methods=['GET'])
-
+@helloworld.route('/', methods=['GET'])
+#@login_required
 def index():
    return render_template('index.html')
+
+"""
