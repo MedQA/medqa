@@ -1,3 +1,81 @@
-<h1>Hello {{ firstname }}</h1>
+{% extends 'base.html' %}
 
-<a href="{{ url_for('user.logout') }}">Logout</a>
+{% block navbar %}
+<ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right ">
+        <li style="margin-top: 15px;margin-right: 5px;"><span class="glyphicon glyphicon-user"></span> Welcome  </li>
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#"> {{ firstname }}<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+          <li><a href="{{ url_for('user.edit_userprofile' , firstname=current_user.firstname) }}">Edit Profile</a></li>
+          <li><a href="{{ url_for('user.logout') }}">Logout</a></li>
+        </ul>
+        </li>
+    </ul>
+</ul>
+{% endblock %}
+
+{% block body %}
+
+<div id='main-content' class='container'>
+<div class="jumbotron">
+	<div class='row'>
+				<div class='col-md-4'>
+					<br><br>
+					<div class='row'>
+						<div class='col-md-12 col-xs-offset-2'>
+
+				<img alt="F340b72deeb79a210ec2138dea6e8561" class="img img-rounded" height="200" src="https://secure.gravatar.com/avatar/f340b72deeb79a210ec2138dea6e8561" width="200" />
+
+			</div>
+			</div><br>
+
+	</div>
+	<div class='col-md-8'>
+			<div class='col-md-12'>
+				<h3 class='bg-info2' style='padding: 0.5em;'>Personal Information</h3>
+				<table class='table table-bordered table-hover'>
+						<tr>
+							<th width='30%'>Name</th>
+							<td>{{ current_user.firstname}} {{ current_user.surname }}</td>
+						</tr>
+
+						<tr>
+							<th width='30%'>Email</th>
+							<td>{{current_user.email}}</td>
+						</tr>
+						<tr>
+							<th width='30%'>Phone</th>
+							<td>{{current_user.phone_number}}</td>
+						</tr>
+						<tr>
+							<th width='30%'>Blood Group</th>
+							<td>{{ current_user.blood_grp }}</td>
+						</tr>
+                        <tr>
+							<th width='30%'>Gender</th>
+							<td>{{ current_user.gender }}</td>
+						</tr>
+                        <tr>
+							<th width='30%'>Allergies</th>
+							<td>{{ current_user.allergies }}</td>
+						</tr>
+                        <tr>
+							<th width='30%'>Medical Ailments</th>
+							<td>{{ current_user.medical_ailments }}</td>
+						</tr>
+                        <tr>
+							<th width='30%'>Previous Medications</th>
+							<td>{{ current_user.previous_medications }}</td>
+						</tr>
+				</table>
+			</div>
+
+		</div>
+	</div>
+	</div>
+</div>
+
+
+
+{% endblock %}

@@ -1,6 +1,6 @@
 from flask.ext.wtf import Form
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField
-from wtforms.validators import Required, Length, Email, EqualTo
+from wtforms.validators import Required, Length, Email, EqualTo, Optional
 
 class SignupForm(Form):
     firstname = StringField('Firstname', validators=[Required(),Length(1,70)])
@@ -12,12 +12,26 @@ class SignupForm(Form):
     #bday_date = IntegerField('Date', validators=[Required()]])
     #bday_month = StringField('Month',validators=[Required()]])
     #bday_year = IntegerField('Year', validators=[Required()]])
-    #gender = StringField(validators=[Required()]])
+    gender = StringField(validators=[Required()])
     terms_cond = BooleanField(validators=[Required()])
-    submit = SubmitField('Log In')
+    submit = SubmitField('Signup')
 
 class LoginForm(Form):
     useremail = StringField('Email',validators=[Required(),Length(1,70),Email()])
     password = PasswordField('Password',validators=[Required()])
     remember_me = BooleanField(default=False)
     submit = SubmitField()
+
+class UserProfileForm(Form):
+    firstname = StringField('Firstname', validators=[Optional(),Length(1,70)])
+    surname = StringField('Lastname',validators=[Optional(),Length(1,70)])
+    email = StringField('Email', validators=[Optional(), Length(1,70), Email()])
+    phone_number = StringField('Phone Number',validators=[Optional(),Length(10,12)])
+    #gender = StringField(validators=[Optional()])
+    #dob = StringField(validators=[Optional()])
+    blood_grp = StringField(validators=[Optional()])
+    location = StringField(validators=[Optional()])
+    allergies = StringField(validators=[Optional()])
+    medical_ailments = StringField(validators=[Optional()])
+    previous_medications = StringField(validators=[Optional()])
+    submit = SubmitField('Update')

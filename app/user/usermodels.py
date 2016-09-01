@@ -11,10 +11,13 @@ class User(db.Model,UserMixin):
     email = db.Column(db.String(70),nullable=False, unique=True, index=True)
     password_hash = db.Column('password',db.String(), nullable=False)
     phone_number = db.Column(db.String(12), nullable=False)
-    #gender = db.Column(db.String(7), nullable=False)
-    #bday_date = db.Column(db.Integer, nullable=False)
-    #bday_month = db.Column(db.String(), nullable=False)
-    #bday_year = db.Column(db.Integer, nullable=False)
+    gender = db.Column(db.String(7), nullable=False)
+    dob = db.Column(db.String(20), nullable=False)
+    blood_grp = db.Column(db.String(5),nullable=True, default='')
+    location = db.Column(db.String(128),nullable=True, default='')
+    allergies = db.Column(db.String(500), nullable=True, default='')
+    medical_ailments = db.Column(db.String(500), nullable=True, default='')
+    previous_medications = db.Column(db.String(500), nullable=True, default='')
 
     def _get_password(self):
         return self.password_hash
