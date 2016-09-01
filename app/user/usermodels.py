@@ -10,7 +10,7 @@ class User(db.Model,UserMixin):
     surname = db.Column(db.String(64), nullable=False)
     email = db.Column(db.String(70),nullable=False, unique=True, index=True)
     password_hash = db.Column('password',db.String(), nullable=False)
-    phone_number = db.Column(db.String(12), nullable=False)
+    phone_number = db.Column(db.String(10), nullable=False)
     gender = db.Column(db.String(7), nullable=False)
     dob = db.Column(db.String(20), nullable=False)
     blood_grp = db.Column(db.String(5),nullable=True, default='')

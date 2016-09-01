@@ -8,7 +8,7 @@ class SignupForm(Form):
     email = StringField('Email', validators=[Required(), Length(1,70), Email()])
     password = PasswordField('Password', validators=[Required()])
     confirm_Password = PasswordField('Confirm Password',validators=[Required(),EqualTo('password', message='Passwords must match')])
-    phone_number = StringField('Phone Number',validators=[Required(),Length(10,12)])
+    phone_number = StringField('Phone Number',validators=[Required(),Length(9,10)])
     #bday_date = IntegerField('Date', validators=[Required()]])
     #bday_month = StringField('Month',validators=[Required()]])
     #bday_year = IntegerField('Year', validators=[Required()]])
@@ -23,10 +23,10 @@ class LoginForm(Form):
     submit = SubmitField()
 
 class UserProfileForm(Form):
-    firstname = StringField('Firstname', validators=[Optional(),Length(1,70)])
-    surname = StringField('Lastname',validators=[Optional(),Length(1,70)])
-    email = StringField('Email', validators=[Optional(), Length(1,70), Email()])
-    phone_number = StringField('Phone Number',validators=[Optional(),Length(10,12)])
+    firstname = StringField('Firstname', validators=[Required(),Length(1,70)])
+    surname = StringField('Lastname',validators=[Required(),Length(1,70)])
+    email = StringField('Email', validators=[Required(), Length(1,70), Email()])
+    phone_number = StringField('Phone Number',validators=[Optional(),Length(9,10)])
     #gender = StringField(validators=[Optional()])
     #dob = StringField(validators=[Optional()])
     blood_grp = StringField(validators=[Optional()])
