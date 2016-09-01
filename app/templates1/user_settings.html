@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/png" href="static/images/favicon.ico 
+"/>
+<title>MedQA</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="static/style1.css"  >
+
+
+</head>
+<body>
+    <div class="wrapper">
+<nav class="navbar navbar-default" >
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/"><img src="static/images/logo.png" id="logo"/></a>
+    </div>
+    <div id="search" class="col-sm-3 col-md-3 pull-right">
+        <form class="navbar-form" role="search">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+            <div class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+        </div>
+        </form>
+        </div>
+
+          <button id="logout" class="btn btn-primary btn-responsive">LOGOUT</button> 
+	<div  class="modal bs-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+	  <div class="modal-dialog modal-sm">
+    	<div class="modal-content">
+      	<div id="logout1" class="modal-header"><h4>Logout <i class="fa fa-lock"></i></h4></div>
+      	<div class="modal-body"><i class="fa fa-question-circle"></i> Are you sure you want to log-off?</div>
+      	<div class="modal-footer"><a href="javascript:;" class="btn btn-primary btn-block">Logout</a></div>
+   	 </div>
+  	</div>
+	</div>
+
+  </div>
+</nav>
+
+
+<div class="container">
+    <h1 id="edit"><b>Edit Profile</b></h1>
+  	<hr>
+	<div class="row">
+      <!-- left column -->
+      <div class="col-md-3">
+        <div class="text-center">
+          <img src="static/images/identicon.png" class="avatar img-circle" alt="avatar">
+          <h6><b>Upload A Different Picture</b></h6>
+          
+          <input id="browse" class="form-control" type="file">
+        </div>
+      </div>
+      
+      <!-- edit form column -->
+      <div class="col-md-9 personal-info">
+       
+        <h2 id="p"><b>Personal Information</b></h2>
+        
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <label class="col-lg-3 control-label">First name:</label>
+            <div class="col-lg-8">
+              <input type="fn" class="form-control" id="fn" placeholder="First Name" <input id="first_name" name="first_name" type="text" value="">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Last name:</label>
+            <div class="col-lg-8">
+              <input type="ln" class="form-control" id="ln" placeholder="Last Name" <input id="last_name" name="last_name" type="text" value="">
+            </div>
+          </div>
+           <div class="form-group">
+                                 <label class="col-lg-3 control-label">E-Mail:</label>
+            			<div class="col-lg-8">
+                                      <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email" <input id="email" name="email" type="text" value="">
+                                  </div>
+                          </div>
+                          
+                           
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Phone Number:</label>
+            <div class="col-lg-8">
+									<input type="tel" class="form-control" id="tel" placeholder="Phone Number" <input id="phone_number" name="phone_number" type="text" value="">
+								</div>
+							</div>
+
+
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Blood Group:</label>
+            <div class="col-lg-8">
+									<input type="tel1" class="form-control" id="tel1" placeholder="Blood Group" <input id="blood_group" name="blood_group" type="text" value="">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Place/Location:</label>
+            <div class="col-lg-8">
+									<input type="tel2" class="form-control" id="tel2" placeholder="Place/Location" <input id="place" name="place" type="text" value="">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Allergies:</label>
+            <div class="col-lg-8">
+									<input type="tel3" class="form-control" id="tel3" placeholder="Allergies" <input id="allergies" name="allergies" type="text" value="">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Medical Ailments:</label>
+            <div class="col-lg-8">
+									<input type="tel4" class="form-control" id="tel4" placeholder="Medical Ailments" <input id="med" name="med" type="text" value="">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Previous Medications:</label>
+            <div class="col-lg-8">
+									<input type="tel5" class="form-control" id="tel5" placeholder="Previous Medications" <input id="prev_med" name="prev_med" type="text" value="">
+								</div>
+							</div>
+        
+           <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+              <input class="btn btn-primary" value="Update Your Profile" type="button">
+              <span></span>
+              <input class="btn btn-default" value="Cancel" type="reset">
+            </div>
+          </div>
+        </form>
+      </div>
+  </div>
+</div>
+<hr>
+<!-- Footer -->
+	<div id="footerwrap">
+			<div class="container">
+				<h4>&#169; Copyright 2016 </h4>
+			</div>
+		</div>
+
+
+</body>
+</html>
