@@ -1,0 +1,69 @@
+
+
+.navbar-brand{
+	font-size: 70px;
+	letter-spacing: 2px;
+	padding-left: 80px;
+	font-family: sans-serif;
+	padding-top: 3px;
+	color: black;
+}
+
+.input-group{
+	padding-left: 80px;
+	width: 650px;
+	padding-top: 11px;
+}
+
+.dropdown{
+	padding-right: 55px;
+	padding-top: 15px;
+	font-size: 15px;
+	color: black;
+}
+.navbar-header{
+	padding-top: 20px;
+}
+
+.avatar{
+	padding-left: 75px;
+	padding-top: 30px;
+}
+
+.info{
+
+	padding-right: 100px;
+}
+.name{
+	font-size: 40px;
+	letter-spacing: 1px;
+}
+.occu{
+	font-size: 22px;
+}
+
+
+.container{
+	padding-top: 8px;
+	width: 900px;
+	height: 100px;
+
+}
+
+.personal, .answer, .medque, .medans{
+	line-height: 40px;
+	padding-bottom: 5px;
+	
+}
+
+.personal, .medque{
+	font-weight: bold;
+}
+
+.col-sm-1{
+	width: 100px;
+	height: 200px;
+}
+.well{
+	height: 90px;
+}

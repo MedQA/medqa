@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename = 'css/assets/images/favicon.ico') }}"/>
+	<title>Profile </title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="{{ (filename = 'style.css') }}"  >
+	<link rel="stylesheet" type="text/css" href="styleprofile.css" >
+</head> 
+
+<body>
+
+	<div class="well">
+		<nav class="navbar" role="navigation">
+		  <!-- Brand and toggle get grouped for better mobile display -->
+		  <div class="navbar-header">
+		    <a class="navbar-brand" href="#">MedQA </a>
+		  </div>
+
+		  <!-- Collect the nav links, forms, and other content for toggling -->
+		  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		    
+		    <div class="col-sm-3 col-md-3">
+		        <form class="navbar-form" role="search">
+		        <div class="input-group">
+		            <input type="text" class="form-control" placeholder="Ask Question " name="q">
+		            <div class="input-group-btn">
+		                <button class="btn btn-primary" type="submit">Search </button>
+		            </div>
+		        </div>
+		        </form>
+		    </div>
+		    <ul class="nav navbar-nav navbar-right">
+		      <li class="dropdown">
+		        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><B> Welcome username </B><b class="caret"></b></a>
+		        <ul class="dropdown-menu">
+		          <li><a href="#">View Profile</a></li>
+		          <li><a href="#">Edit Profile</a></li>
+		          <li><a href="#">Add Photo</a></li>
+		          <li class="divider"></li>
+		          <li><a href="#">Logout</a></li>
+		        </ul>
+		      </li>
+		    </ul>
+		  </div><!-- /.navbar-collapse -->
+		</nav>
+	</div>
+
+
+	<div class="avatar">
+		
+		<div class="col-sm-3 sidenav">
+	        <img src="xyz.jpeg" class="img-rectangle" height="260" width="250" alt="Avatar">
+	        <h3 class="name">Karan <br>Tatiwala </br></h3>
+	        <h4 class="occu">Student At LNMIIT</h4>
+	        <h4>Something abt me like blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah </h4>
+
+	    </div>
+
+	</div>
+
+
+
+
+
+	<div class="info">
+		
+		<div class="col-sm-1">
+			
+			<div class="container">
+			
+			  <div class="panel panel-default">
+			    <div class="panel-heading"><h4><B> ABOUT </B></h4></div>
+			    <div class="panel-body">
+			    	<div class="container">
+					  <div class="row">
+					    <div class="col-sm-2">
+					    	<h4 class="personal"> Name: </h4>
+					    	<h4 class="personal"> Email Id: </h4>
+					    	<h4 class="personal"> Phone No.: </h4>
+					    	<h4 class="personal"> Location: </h4>
+
+					    </div>
+					    <div class="col-sm-3">
+					      	<h4 class="answer"> Karan Tatiwala </h4>
+					    	<h4 class="answer"> karantatiwala </h4>
+					    	<h4 class="answer"> xxxxxxxxxx </h4>
+					    	<h4 class="answer"> Jaipur, Rajasthan </h4>
+
+					    </div>
+					    <div class="col-sm-3">
+					      	<h4 class="medque"> Blood Group: </h4>
+					    	<h4 class="medque"> Medical Ailment: </h4>
+					    	<h4 class="medque"> Allergies: </h4>
+					    	<h4 class="medque"> Previous Medication: </h4>
+					    </div>
+					     <div class="col-sm-3">
+					      	<h4 class="medans"> O+ </h4>
+					    	<h4 class="medans"> CANCER </h4>
+					    	<h4 class="medans"> blah blah </h4>
+					    	<h4 class="medans"> blah blah </h4>
+					    </div>
+					 </div>
+					</div>
+			    </div>
+			  </div>
+			</div>
+
+			
+
+	    </div>
+
+	</div>
+
+</body>
+
+
+</html>
