@@ -30,8 +30,8 @@ class DefaultConfig(BaseConfig):
    #flask_mail
    MAIL_SERVER = 'smtp.gmail.com'
    MAIL_PORT = 465
-   MAIL_USERNAME = 'garg95hitesh@gmail.com'
-   MAIL_PASSWORD = ''
+   MAIL_USERNAME = 'medqadevelop@gmail.com'
+   MAIL_PASSWORD = 'medqa@7AA'
    MAIL_USE_TLS = False
    MAIL_USE_SSL = True
 
