@@ -91,7 +91,7 @@ def forgot_password():
             return "sent"
         else:
             error = "Email Address Not Registered!"
-            print error
+            print error #TODO
             return render_template('user/forgot_password.html',form=form)
     return render_template('user/forgot_password.html',form=form)
 
@@ -108,4 +108,16 @@ def reset_password():
             db.session.commit()
             return redirect('user.login')
         return render_template('user/reset_password.html',form=form)
-    return "Token expired"
+    return "Token expired" #TODO
+
+@user.route('/<firstname>/change_password', methods=['GET','POST'])
+def changepassword(firstname):
+    form = ResetPasswordForm()
+    if form.validate_on_submit():
+        password = form.password.data
+        user = current_user._get_current_object()
+        user.password = password
+        db.session.add(user)
+        db.session.commit()
+        return redirect(url_for('user.userprofile', firstname=firstname))
+    return render_template('user/reset_password.html',form=form)

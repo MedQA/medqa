@@ -6,12 +6,14 @@ from .common import constants as COMMON_CONSTANTS
 from .api import helloworld
 from .user import user
 from .user import User
+from .testimonials import testimonials
 
 # For import *
 __all__ = ['create_app']
 
 DEFAULT_BLUEPRINTS = [
-   user
+   user,
+   testimonials
 ]
 
 def create_app(config=None, app_name=None, blueprints=None):
@@ -63,7 +65,7 @@ def configure_extensions(app):
 
     #Flask-Mail
     mail.init_app(app)
-    
+
 
 def configure_blueprints(app, blueprints):
    for blueprint in blueprints:

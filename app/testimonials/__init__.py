@@ -1,0 +1,2 @@
+from testimonialsmodels import Testimonials
+from testimonialsviews import testimonials

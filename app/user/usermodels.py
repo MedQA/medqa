@@ -21,6 +21,8 @@ class User(db.Model,UserMixin):
     medical_ailments = db.Column(db.String(500), nullable=True, default='')
     previous_medications = db.Column(db.String(500), nullable=True, default='')
 
+    testmonials = db.relationship('Testimonials',backref='author',lazy='dynamic')
+
     def _get_password(self):
         return self.password_hash
 
