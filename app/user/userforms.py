@@ -1,6 +1,8 @@
 from flask.ext.wtf import Form
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField
+from wtforms import validators
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField, TextField
 from wtforms.validators import Required, Length, Email, EqualTo, Optional
+from .usermodels import User
 
 class SignupForm(Form):
     firstname = StringField('Firstname', validators=[Required(),Length(1,70)])
@@ -35,3 +37,11 @@ class UserProfileForm(Form):
     medical_ailments = StringField(validators=[Optional()])
     previous_medications = StringField(validators=[Optional()])
     submit = SubmitField('Update')
+
+
+class ForgotPasswordForm(Form):
+    email = StringField('Email', validators=[Required(), Length(1,70), Email()])
+
+class ResetPasswordForm(Form):
+    password = PasswordField('Password', validators=[Required()])
+    confirm_Password = PasswordField('Confirm Password',validators=[Required(),EqualTo('password', message='Passwords must match')])

@@ -1,6 +1,8 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.extensions import db, login_manager
 from flask.ext.login import UserMixin
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+from flask import current_app
 
 class User(db.Model,UserMixin):
     __tablename__ = 'users'
@@ -49,3 +51,19 @@ class User(db.Model,UserMixin):
     @classmethod
     def is_email_taken(cls, email_address):
         return db.session.query(db.exists().where(User.email==email_address)).scalar()
+
+    def get_token(self, expiration=100):
+        s = Serializer(current_app.config['SECRET_KEY'], expiration)
+        return s.dumps({'user':self.id}).decode('utf-8')
+
+    @staticmethod
+    def verify_token(token):
+        s = Serializer(current_app.config['SECRET_KEY'])
+        try:
+            data = s.loads(token)
+        except:
+            return None
+        id = data.get('user')
+        if id:
+            return User.query.get(id)
+        return None

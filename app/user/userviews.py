@@ -6,8 +6,9 @@ from flask import (Blueprint, render_template, current_app, request,
 from flask.ext.login import login_required, login_user, current_user,\
                             logout_user
 from app.user import User
-from app.extensions import db, login_manager
-from userforms import SignupForm, LoginForm, UserProfileForm
+from app.extensions import db, login_manager, mail
+from userforms import SignupForm, LoginForm, UserProfileForm, ForgotPasswordForm, ResetPasswordForm
+from flask_mail import Message
 
 user = Blueprint('user', __name__)
 
@@ -58,18 +59,6 @@ def userprofile(firstname):
 def edit_userprofile(firstname):
     form = UserProfileForm()
     if form.validate_on_submit():
-        """
-        current_user.firstname = request.form.get('firstname')
-        current_user.surname = request.form.get('surname')
-        current_user.email = request.form.get('email')
-        current_user.phone_number = request.form.get('phone_number')
-        current_user.gender = request.form.get('gender')
-        current_user.blood_grp = request.form.get('blood_grp')
-        current_user.location = request.form.get('location')
-        current_user.allergies = request.form.get('allergies')
-        current_user.medical_ailments = request.form.get('medical_ailments')
-        current_user.previous_medications = request.form.get('previous_medications')
-        """
         user = current_user._get_current_object()
         form.populate_obj(user)
         db.session.add(user)
@@ -80,10 +69,43 @@ def edit_userprofile(firstname):
     form.surname.data = current_user.surname
     form.email.data = current_user.email
     form.phone_number.data = current_user.phone_number
-    #form.gender.data = current_user.gender
     form.blood_grp.data = current_user.blood_grp
     form.location.data = current_user.location
     form.allergies.data = current_user.allergies
     form.medical_ailments.data = current_user.medical_ailments
     form.previous_medications.data =current_user.previous_medications
     return render_template('user/edit_userprofile.html', firstname=firstname, form=form)
+
+@user.route('/forgot_password', methods=['GET','POST'])
+def forgot_password():
+    form = ForgotPasswordForm()
+    if form.validate_on_submit():
+        email = form.email.data
+        user = User.query.filter_by(email=email).first()
+
+        if user:
+            token = user.get_token()
+            msg = Message('PasswordReset[MedQa]', sender = 'garg95hitesh@gmail.com', recipients=[user.email])
+            msg.body = "You're receiving this email because you requested a password reset for your user account at Medqa.in\n\n Please go to the following page and choose a new password:\n http://0.0.0.0:5000/reset_password?token=" + token+ "\n\nThanks!\nTeam Medqa"
+            mail.send(msg)
+            return "sent"
+        else:
+            error = "Email Address Not Registered!"
+            print error
+            return render_template('user/forgot_password.html',form=form)
+    return render_template('user/forgot_password.html',form=form)
+
+@user.route('/reset_password', methods=['GET','POST'])
+def reset_password():
+    token = request.args.get('token',None)
+    verifed_result = User.verify_token(token)
+    if token and verifed_result:
+        form = ResetPasswordForm()
+        if form.validate_on_submit():
+            password = form.password.data
+            verifed_result.password = password
+            db.session.add(verifed_result)
+            db.session.commit()
+            return redirect('user.login')
+        return render_template('user/reset_password.html',form=form)
+    return "Token expired"

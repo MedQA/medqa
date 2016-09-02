@@ -36,7 +36,7 @@
                            <input type="checkbox" value="remember-me" {{ form2.remember_me}} Remember me
                             </label>
 
-                       <a class="help-inline" href="#" style="margin-left: 125px;">  Forgot password? </a>
+                       <a class="help-inline" href="{{ url_for('user.forgot_password') }}" style="margin-left: 125px;">  Forgot password? </a>
 
         </form>
 {% endblock %}
