@@ -31,11 +31,11 @@ class DefaultConfig(BaseConfig):
    MAIL_SERVER = 'smtp.gmail.com'
    MAIL_PORT = 465
    MAIL_USERNAME = 'garg95hitesh@gmail.com'
-   MAIL_PASSWORD = 'hackinout.co'
+   MAIL_PASSWORD = ''
    MAIL_USE_TLS = False
    MAIL_USE_SSL = True
 
-   
+
 class LocalConfig(DefaultConfig):
    # config for local development
    pass
