@@ -9,6 +9,7 @@ app/database_info.py
 
 # Distribution / packaging
 .Python
+venv/
 env/
 build/
 develop-eggs/
