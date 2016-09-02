@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+<ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right ">
+        <li style="margin-top: 15px;margin-right: 5px;"><span class="glyphicon glyphicon-user"></span> Welcome  </li>
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#"> {{ firstname }}<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+          <li><a href="{{ url_for('user.userprofile', firstname=current_user.firstname) }}">Home</a></li>
+          <li><a href="{{ url_for('user.logout') }}">Logout</a></li>
+        </ul>
+        </li>
+    </ul>
+</ul>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 ><b>Edit Profile</b></h1>
+  	<hr>
+	<div class="row">
+      <!-- left column -->
+      <div class="col-md-3">
+        <div class="text-center">
+          <img src="https://secure.gravatar.com/avatar/f340b72deeb79a210ec2138dea6e8561" class="avatar img-circle" alt="avatar">
+
+        </div>
+      </div>
+
+      <!-- edit form column -->
+      <div class="col-md-9 personal-info">
+
+        <h2 style="margin-left:250px"><b>Personal Information</b></h2>
+        <br>
+        <form class="form-horizontal" role="form" action="{{ url_for('user.edit_userprofile', firstname=current_user.firstname) }}" method='post'>
+            {{ form.hidden_tag() }}<!--For CSRF -->
+          <div class="form-group">
+            <label class="col-lg-3 control-label">First name:</label>
+            <div class="col-lg-8">
+              <input type="text" class="form-control" id="firstName" placeholder="First name" {{form.firstname}}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Surname:</label>
+            <div class="col-lg-8">
+              <input type="text" class="form-control" id="Surname" placeholder="Surname" {{form.surname}}
+            </div>
+          </div>
+           <div class="form-group">
+                                 <label class="col-lg-3 control-label">E-Mail:</label>
+            			<div class="col-lg-8">
+                                      <input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email" {{ form.email }}
+                                  </div>
+                          </div>
+
+
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Phone Number:</label>
+            <div class="col-lg-8">
+									<input type="tel" class="form-control" id="tel" placeholder="Phone Number" {{ form.phone_number }}
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Blood Group:</label>
+            <div class="col-lg-8">
+									<input type="tel" class="form-control" id="tel" placeholder="Blood Group" {{ form.blood_grp }}
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Place/Location:</label>
+            <div class="col-lg-8">
+									<input type="tel" class="form-control" id="tel" placeholder="Place/Location" {{ form.location }}
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Allergies:</label>
+            <div class="col-lg-8">
+									<input type="tel" class="form-control" id="tel" placeholder="Allergies" {{ form.allergies }}
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Medical Ailments:</label>
+            <div class="col-lg-8">
+									<input type="tel" class="form-control" id="tel" placeholder="Medical Ailments" {{ form.medical_ailments }}
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-3 control-label">Previous Medications:</label>
+            <div class="col-lg-8">
+									<input type="tel" class="form-control" id="tel" placeholder="Previous Medications" {{ form.previous_medications }}
+								</div>
+							</div>
+
+           <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+              <input class="btn btn-primary" value="Update Your Profile" type="submit">
+              <span></span>
+
+            </div>
+          </div>
+        </form>
+      </div>
+  </div>
+</div>
+{% endblock %}

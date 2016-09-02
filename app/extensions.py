@@ -10,3 +10,8 @@ login_manager = LoginManager()
 # Flask-WTF csrf protection
 from flask_wtf.csrf import CsrfProtect
 csrf = CsrfProtect()
+
+
+#Flask-Mail
+from flask_mail import Mail, Message
+mail = Mail()

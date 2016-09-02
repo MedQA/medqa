@@ -52,10 +52,11 @@ body {
 
 #logo{
 	width:150px;
-	height:40px;
+	height:20px;
 	margin-left:30px;
 	margin-buttom:10px;
 }
-.navbar{
-    height:70px;
+
+.jumbotron{
+    background-image: url(../../static/images/jumbotron-log.jpg);
 }
