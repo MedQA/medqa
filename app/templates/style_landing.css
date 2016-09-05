@@ -1,0 +1,51 @@
+.navbar-brand{
+	font-size: 70px;
+	letter-spacing: 2px;
+	padding-left: 80px;
+	font-family: sans-serif;
+	padding-top: 3px;
+	color: black;
+}
+
+.input-group{
+	padding-left: 80px;
+	width: 650px;
+	padding-top: 11px;
+}
+
+.dropdown{
+	padding-right: 55px;
+	padding-top: 15px;
+	font-size: 15px;
+	color: black;
+}
+.navbar-header{
+	padding-top: 20px;
+}
+.well{
+	height: 90px;
+}
+
+.container-fluid{
+	padding-left: 50px;
+	padding-right: 30px;
+	padding-top: 40px;
+}
+.panel-body{
+	word-wrap: break-word;
+}
+.panel-heading{
+	font-family: sans-serif;
+	font-size: 20px;
+}
+ul{
+	list-style-type: disc;
+	line-height: 30px;
+	font-size: 25px;
+	font-family: sans-serif;
+}
+
+.news{
+	font-family: sans-serif;
+	font-size: 20px;
+}
