@@ -7,7 +7,8 @@
         <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#"> {{ firstname }}<span class="caret"></span></a>
             <ul class="dropdown-menu">
-          <li><a href="{{ url_for('user.userprofile', firstname=current_user.firstname) }}">Home</a></li>
+          <li><a href="{{ url_for('user.home', firstname=current_user.firstname) }}">Home</a></li>
+          <li><a href="{{ url_for('user.userprofile', firstname=current_user.firstname) }}">Profile</a></li>
           <li><a href="{{ url_for('user.logout') }}">Logout</a></li>
         </ul>
         </li>

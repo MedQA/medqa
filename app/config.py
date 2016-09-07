@@ -31,7 +31,7 @@ class DefaultConfig(BaseConfig):
    MAIL_SERVER = 'smtp.gmail.com'
    MAIL_PORT = 465
    MAIL_USERNAME = 'medqadevelop@gmail.com'
-   MAIL_PASSWORD = 'medqa@7AA'
+   MAIL_PASSWORD = ''
    MAIL_USE_TLS = False
    MAIL_USE_SSL = True
 
