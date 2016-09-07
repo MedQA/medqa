@@ -3,7 +3,7 @@
 '''
 from flask import (Blueprint, render_template, current_app, request,
                    flash, url_for, redirect, session, abort, jsonify)
-from flask.ext.login import login_required, login_user, current_user,\
+from flask_login import login_required, login_user, current_user,\
                             logout_user
 
 #from app.user import User

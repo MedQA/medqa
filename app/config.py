@@ -26,7 +26,7 @@ class DefaultConfig(BaseConfig):
    SECRET_KEY = 'development key'
 
    SQLALCHEMY_DATABASE_URI = Data_urls.dev_url
-
+   SQLALCHEMY_TRACK_MODIFICATIONS = True
    #flask_mail
    MAIL_SERVER = 'smtp.gmail.com'
    MAIL_PORT = 465
