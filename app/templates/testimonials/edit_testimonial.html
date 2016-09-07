@@ -18,14 +18,14 @@
 
 {% block body %}
 <div class="container">
-    <h1 ><b>Add Testimonial</b></h1>
+    <h1 ><b>Edit Testimonial</b></h1>
   	<hr>
 	<div class="row">
 
       <!-- edit form column -->
       <div class="col-md-9 personal-info">
 
-        <form class="form-horizontal" role="form" action="{{ url_for('testimonials.add_testimonial', firstname=current_user.firstname) }}" method='post'>
+        <form class="form-horizontal" role="form" action="{{ url_for('testimonials.edit_testimonial', firstname=current_user.firstname, tid=tid) }}" method='post'>
             {{ form.hidden_tag() }}<!--For CSRF -->
             {% if form.title.errors  %}
             <div class="form-group has-error has-feedback">
@@ -62,7 +62,8 @@
            <div class="form-group">
             <label class="col-md-3 control-label"></label>
             <div class="col-md-8">
-                 <input class="btn btn-primary" value="Add Testimonial" type="submit">
+                 <input class="btn btn-primary" value="Update" type="submit">
+                 <a href="{{ url_for('testimonials.delete_testimonial', firstname=current_user.firstname, tid=tid) }}" class="btn btn-info" role="button">Delete</a>
               <a href="{{ url_for('user.userprofile',firstname=current_user.firstname) }}" class="btn btn-info" role="button">Cancel</a>
             </div>
           </div>

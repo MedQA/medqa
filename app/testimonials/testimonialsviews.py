@@ -28,3 +28,29 @@ def add_testimonial(firstname):
         flash('Testimonial Added Successfully!')
         return redirect(url_for('user.userprofile',firstname=firstname))
     return render_template('testimonials/add_testimonial.html',form=form)
+
+@testimonials.route('/<tid>/edit_testimonial', methods=['GET','POST'])
+@login_required
+def edit_testimonial(firstname, tid):
+    form = TestimonialsForm()
+    testimonial = Testimonials.query.filter_by(id=tid).first_or_404()
+    if form.validate_on_submit():
+        testimonial.title = form.title.data
+        testimonial.description = form.description.data
+        db.session.add(testimonial)
+        db.session.commit()
+        flash('Testimonial Updated Successfully!')
+        return redirect(url_for('user.userprofile',firstname=firstname))
+    form.title.data =  testimonial.title
+    form.description.data = testimonial.description
+    return render_template('testimonials/edit_testimonial.html',form=form,tid=tid)
+
+
+@testimonials.route('/<tid>/delete_testimonial', methods=['GET','POST'])
+@login_required
+def delete_testimonial(firstname, tid):
+    testimonial = Testimonials.query.filter_by(id=tid).first_or_404()
+    db.session.delete(testimonial)
+    db.session.commit()
+    flash('Testimonial Deleted Successfully!')
+    return redirect(url_for('user.userprofile',firstname=firstname))

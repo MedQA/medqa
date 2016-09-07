@@ -104,7 +104,7 @@
             {% if testimonial_list %}
             <ul>
                 {% for testimonials in testimonial_list %}
-                <li><a href="#"><strong>{{ testimonials.title }}</strong></a></li>
+                <li><a href="{{ url_for('testimonials.edit_testimonial', firstname=current_user.firstname, tid=testimonials.id) }}"><strong>{{ testimonials.title }}</strong></a></li>
                 {{ testimonials.description }}<br><br>
                 {% endfor %}
             </ul>
