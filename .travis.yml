@@ -5,14 +5,14 @@ python:
 install:
 - pip install -r requirements.txt
 - pip install coveralls
-script:
-- nosetests
-after_success:
-- coveralls
 env:
 - SECRET_KEY='development_key'
 - EMAIL_KEY='medqa@7AA'
-- DATABASE_URL='postgresql+psycopg2://medqauser:test14@localhost/medqa'    
+- DATABASE_URL='postgresql+psycopg2://medqauser:test14@localhost/medqa'
+script:
+- python run.py
+after_success:
+- coveralls
 deploy:
   provider: heroku
   api_key:
