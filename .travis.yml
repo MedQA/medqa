@@ -8,9 +8,9 @@ install:
 env:
 - SECRET_KEY='development_key'
 - EMAIL_KEY='medqa@7AA'
-- DATABASE_URL='postgresql+psycopg2://medqauser:test14@localhost/medqa'
+- DATABASE_URL='postgresql+psycopg2://medqauser:test14@localhost/medqa'   
 script:
-- python run.py
+- nosetests
 after_success:
 - coveralls
 deploy:
