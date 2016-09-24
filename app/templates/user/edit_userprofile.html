@@ -7,7 +7,8 @@
         <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#"> {{ firstname }}<span class="caret"></span></a>
             <ul class="dropdown-menu">
-          <li><a href="{{ url_for('user.userprofile', firstname=current_user.firstname) }}">Home</a></li>
+          <li><a href="{{ url_for('user.home', firstname=current_user.firstname) }}">Home</a></li>
+          <li><a href="{{ url_for('user.userprofile', firstname=current_user.firstname) }}">Profile</a></li>
           <li><a href="{{ url_for('user.logout') }}">Logout</a></li>
         </ul>
         </li>
@@ -92,7 +93,13 @@
 									<input type="tel" class="form-control" id="tel" placeholder="Previous Medications" {{ form.previous_medications }}
 								</div>
 							</div>
-
+                            <div class='form-group'>
+                                <label class="col-lg-3 control-label">Password:</label>
+            <div class="col-lg-8">
+                              <a href="{{ url_for('user.changepassword', firstname=current_user.firstname) }}">
+                              <button type="button" class="btn btn-success">Change Password</button></a>
+                            </div>
+                            <br><br>
            <div class="form-group">
             <label class="col-md-3 control-label"></label>
             <div class="col-md-8">

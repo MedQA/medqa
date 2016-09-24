@@ -3,7 +3,7 @@
 '''
 from flask import (Blueprint, render_template, current_app, request,
                    flash, url_for, redirect, session, abort, jsonify)
-from flask.ext.login import login_required, login_user, current_user,\
+from flask_login import login_required, login_user, current_user,\
                             logout_user
 from app.user import User
 from app.extensions import db, login_manager, mail
@@ -27,7 +27,7 @@ def signup():
             db.session.add(user)
             db.session.commit()
             login_user(user)
-            return redirect(url_for('user.userprofile',firstname=user.firstname))
+            return redirect(url_for('user.home',firstname=user.firstname))
         return render_template('user/index.html', form1=form1, form2=form2, error='error')
     return render_template('user/index.html', form1=form1, form2=form2)
 
@@ -40,7 +40,7 @@ def login():
         if not authenticated:
             return render_template('user/index.html',form1=form1, form2=form2,usererror='Invalid email or password.')
         login_user(user, form2.remember_me.data)
-        return redirect(url_for('user.userprofile',firstname=user.firstname))
+        return redirect(url_for('user.home',firstname=user.firstname))
     return render_template('user/index.html',form1=form1, form2=form2)
 
 @user.route('/logout/')
@@ -51,8 +51,16 @@ def logout():
 
 @user.route('/<firstname>/')
 @login_required
+def home(firstname):
+    return render_template('user/home.html',firstname=firstname)
+
+
+@user.route('/<firstname>/profile/')
+@login_required
 def userprofile(firstname):
-    return render_template('user/userprofile.html', firstname=firstname)
+    user = User.query.filter_by(email=current_user.email).first_or_404()
+    testimonial_list = user.testmonials.order_by('-id').all()
+    return render_template('user/userprofile.html', firstname=firstname, testimonial_list=testimonial_list)
 
 @user.route('/<firstname>/edit_userprofile/',methods=['GET','POST'])
 @login_required
@@ -91,7 +99,7 @@ def forgot_password():
             return "sent"
         else:
             error = "Email Address Not Registered!"
-            print error
+            print error #TODO
             return render_template('user/forgot_password.html',form=form)
     return render_template('user/forgot_password.html',form=form)
 
@@ -108,4 +116,16 @@ def reset_password():
             db.session.commit()
             return redirect('user.login')
         return render_template('user/reset_password.html',form=form)
-    return "Token expired"
+    return "Token expired" #TODO
+
+@user.route('/<firstname>/change_password', methods=['GET','POST'])
+def changepassword(firstname):
+    form = ResetPasswordForm()
+    if form.validate_on_submit():
+        password = form.password.data
+        user = current_user._get_current_object()
+        user.password = password
+        db.session.add(user)
+        db.session.commit()
+        return redirect(url_for('user.userprofile', firstname=firstname))
+    return render_template('user/reset_password.html',form=form)

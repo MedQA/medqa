@@ -1,6 +1,6 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.extensions import db, login_manager
-from flask.ext.login import UserMixin
+from flask_login import UserMixin
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flask import current_app
 
@@ -20,6 +20,8 @@ class User(db.Model,UserMixin):
     allergies = db.Column(db.String(500), nullable=True, default='')
     medical_ailments = db.Column(db.String(500), nullable=True, default='')
     previous_medications = db.Column(db.String(500), nullable=True, default='')
+
+    testmonials = db.relationship('Testimonials',backref='author',lazy='dynamic')
 
     def _get_password(self):
         return self.password_hash

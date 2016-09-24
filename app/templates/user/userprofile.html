@@ -17,6 +17,23 @@
 
 {% block body %}
 
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="alert alert-success">
+    {% for message in messages %}
+       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>{{ message }}
+    {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+<div class='container'>
+<div class='row'>
+    <div class='col-md-offset-10'>
+        <span class="glyphicon glyphicon-pencil" style="font-size:19px"><a href="{{url_for('testimonials.add_testimonial',firstname=current_user.firstname)}}">AddTestimonials</a>
+        </span>
+    </div>
+    </div>
+</div>
 <div id='main-content' class='container'>
 <div class="jumbotron">
 	<div class='row'>
@@ -74,12 +91,28 @@
 						</tr>
 				</table>
 			</div>
-
 		</div>
 	</div>
 	</div>
 </div>
-
-
+<div class='container'>
+	<div class='row'>
+        <div class='col-md-4'>
+            <h2> My Testimonials :-</h2>
+        </div>
+        <div class='col-md-8'><br><br>
+            {% if testimonial_list %}
+            <ul>
+                {% for testimonials in testimonial_list %}
+                <li><a href="{{ url_for('testimonials.edit_testimonial', firstname=current_user.firstname, tid=testimonials.id) }}"><strong>{{ testimonials.title }}</strong></a></li>
+                {{ testimonials.description }}<br><br>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <h3>No Testimonials</h3>
+            {% endif %}
+        </div>
+    </div>
+</div>
 
 {% endblock %}

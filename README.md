@@ -22,7 +22,7 @@ Bootstrap
 We coordinate on issues, if there is the part you need to comment or the bugs or features,
 do point by filing new issues [here](https://github.com/medqa/medqa/issues).
 
-### The project is live. Click [here](https://medqa.herokuapp.com/)  
+### The project is live. Click [here](https://medqadevelop.herokuapp.com/)  
 
 To Contribute or Build it, Read [Contributing.MD](CONTRIBUTING.MD)
 

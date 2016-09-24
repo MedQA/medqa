@@ -1,6 +1,6 @@
 import os
 from common.constants import INSTANCE_FOLDER_PATH
-from database_info import Data_urls
+
 
 class BaseConfig(object):
 
@@ -15,7 +15,7 @@ class BaseConfig(object):
    ADMINS = ['youremail@yourdomain.com']
 
    # http://flask.pocoo.org/docs/quickstart/#sessions
-   SECRET_KEY = 'secret key'
+   SECRET_KEY = os.environ['SECRET_KEY']
 
 class DefaultConfig(BaseConfig):
 
@@ -23,15 +23,15 @@ class DefaultConfig(BaseConfig):
    DEBUG = True
 
    # Secret key for signing cookies
-   SECRET_KEY = 'development key'
+   SECRET_KEY = os.environ['SECRET_KEY']
 
-   SQLALCHEMY_DATABASE_URI = Data_urls.dev_url
-
+   SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+   SQLALCHEMY_TRACK_MODIFICATIONS = True
    #flask_mail
    MAIL_SERVER = 'smtp.gmail.com'
    MAIL_PORT = 465
    MAIL_USERNAME = 'medqadevelop@gmail.com'
-   MAIL_PASSWORD = 'medqa@7AA'
+   MAIL_PASSWORD = os.environ['EMAIL_KEY']
    MAIL_USE_TLS = False
    MAIL_USE_SSL = True
 

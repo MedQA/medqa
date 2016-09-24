@@ -1,8 +1,8 @@
-from flask.ext.wtf import Form
+from flask_wtf import Form
 from wtforms import validators
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField, TextField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField
 from wtforms.validators import Required, Length, Email, EqualTo, Optional
-from .usermodels import User
+
 
 class SignupForm(Form):
     firstname = StringField('Firstname', validators=[Required(),Length(1,70)])
