@@ -9,6 +9,10 @@ script:
 - nosetests
 after_success:
 - coveralls
+env:
+- SECRET_KEY=development_key
+- EMAIL_KEY=medqa@7AA
+- DATABASE_URL=postgresql+psycopg2://medqauser:test14@localhost/medqa    
 deploy:
   provider: heroku
   api_key:
