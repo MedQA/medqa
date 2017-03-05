@@ -26,6 +26,16 @@ do point by filing new issues [here](https://github.com/medqa/medqa/issues).
 
 To Contribute or Build it, Read [Contributing.MD](CONTRIBUTING.MD)
 
+## Developers
+```
+Sagar Chand Agarwal
+Hitesh Garg
+Himanshi Khandelwal
+Tayba Wasim
+Gaurav Kulkarni
+Karan Tatiwala
+```
+
 ## Licensed under MIT
 >The MIT License (MIT)
 
