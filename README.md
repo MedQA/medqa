@@ -30,6 +30,7 @@ To Contribute or Build it, Read [Contributing.MD](CONTRIBUTING.MD)
 ```
 Sagar Chand Agarwal
 Hitesh Garg
+Dhairya Dugar
 Himanshi Khandelwal
 Tayba Wasim
 Gaurav Kulkarni
